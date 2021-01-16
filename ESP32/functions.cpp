@@ -4,7 +4,6 @@
 #include <NTPClient.h>
 #include <WiFiUdp.h>
 #include <WiFiClient.h>
-#include <BlynkSimpleEsp32.h>
 #include "PubSubClient.h"
 // Define NTP Client to get time                                  //These codes are for getting real time
 WiFiUDP ntpUDP;
@@ -24,25 +23,18 @@ extern PubSubClient client;
 
 void initialize_timer()
 {
-    timeClient.begin();                                             // Set offset time in seconds to adjust for your timezone, in this case GMT -7 for Victoria, BC
+    timeClient.begin();                                             // Set offset time in seconds to adjust for your timezone, in this case GMT -8 for Victoria, BC in winter
     timeClient.setTimeOffset(-28800);
 }
 
 String get_contact_time(){
     timeClient.forceUpdate();
-    String formattedDate = timeClient.getFormattedTime();    //YYYY-MM-DDTHH:MM:SSZ
+    String formattedDate = timeClient.getFormattedDate();    //YYYY-MM-DDTHH:MM:SSZ
     int splitT = formattedDate.indexOf("T");
     String dayStamp = formattedDate.substring(0, splitT);    // Extract date
     String timeStamp = formattedDate.substring(splitT+1, formattedDate.length()-1); // Extract time
     return dayStamp + " " + timeStamp; 
 }
-
-BLYNK_WRITE(V2)                                     //reset when needed according to virtual button in Blynk app
-{
-  reset = param.asInt();
-}
-
-
 
 //--------------------------------------------------------------------------ESP WORK-----------------------------------------------------------------------------------------------------------
 
@@ -52,25 +44,7 @@ BLYNK_WRITE(V2)                                     //reset when needed accordin
 #include "sdkconfig.h"
 #include "driver/adc.h"
 #include <string.h>                                         //library for string type
-#include <EEPROM.h>     
-void restartESP(int &reset)
-{
-  if (reset == 1)
-  {
-    Blynk.virtualWrite(V1, "clr");                        //Clear the data on the server if reset the ESP32
-    EEPROM.write(3960, 0);                                //Clear memory for number of EEPROM already used
-    EEPROM.commit();  
-    EEPROM.write(3961, 0);
-    EEPROM.commit();
-    EEPROM.write(3962,0);                                 //Clear memory for number of EEPROM already uploaded
-    EEPROM.commit();
-    EEPROM.write(3963,0);
-    EEPROM.commit();
-    ESP.restart();                                        //Restart the ESP32
-    reset =0;
-  }
-}    
-                  
+#include <EEPROM.h>                     
 #include <ctype.h>
 
 void Write_Unsigned_Int_Into_EEPROM(int address, unsigned int value){
@@ -80,7 +54,7 @@ void Write_Unsigned_Int_Into_EEPROM(int address, unsigned int value){
 
 void Write_Time_Into_EEPROM(int address){
     timeClient.forceUpdate();
-    String formattedDate = timeClient.getFormattedTime();    //YYYY-MM-DDTHH:MM:SSZ
+    String formattedDate = timeClient.getFormattedDate();    //YYYY-MM-DDTHH:MM:SSZ
     unsigned int Year = formattedDate.substring(0, 3).toInt();
     unsigned int Month = formattedDate.substring(5, 6).toInt();
     unsigned int Day = formattedDate.substring(8, 9).toInt();
@@ -185,49 +159,27 @@ enum St
         FULLMEM
     };
 extern St state;  
-void retrieve_state(){
-
-                                                
-    int last_state = EEPROM.read(3964);                         //state password for first time use
-    Serial.print("Last state is: ");
-    Serial.println(last_state);
-        
-    switch (last_state){                                        //retrieve the last state in case not the first time use
-        case 1:
-        print_info("Before initial Blynk", true, 1000);
-        Blynk.begin(auth, ssid, pass);
-        print_info("After initial Blynk", true, 2000);
-        state = WORKING;
-        break;
-
-        case 2:
-        Blynk.begin(auth, ssid, pass);
-        state = UPLOAD_ONLY;
-        break;
-
-        case 3:
-        Blynk.begin(auth, ssid, pass);
-        state = FULLMEM;
-        break; 
-    }
-}
 
 
 //-----------------------------------------------------------------------------------WIFI WORK-------------------------------------------------------------------------------------------
 
 
 bool reconnectWiFi(){
-    WiFi.begin(ssid, pass);
-    Serial.println("Connecting...");
-    long long int start_time = millis();
-    while (WiFi.status() != WL_CONNECTED && millis()-start_time < 10000){}
-    if (WiFi.status() == WL_CONNECTED){
-        Serial.print("Connected to WiFi network with IP Address: ");
-        Serial.println(WiFi.localIP());
+    if (WiFi.status() != WL_CONNECTED){
+        WiFi.begin(ssid, pass);
+        Serial.println("Connecting...");
+        long long int start_time = millis();
+        while (WiFi.status() != WL_CONNECTED && millis()-start_time < 10000){}
+        if (WiFi.status() == WL_CONNECTED){
+            Serial.print("Connected to WiFi network with IP Address: ");
+            Serial.println(WiFi.localIP());
+            return true;
+        }
+        Serial.println("Time out (over 10 seconds).");
+        return false;
+    } else {
         return true;
     }
-    Serial.println("Time out (over 10 seconds).");
-    return false;
 }
 
 //----------------------------------------------------------------------------BLUETOOTH WORK------------------------------------------------------------------------------------------------
@@ -256,37 +208,12 @@ void printDeviceAddress()
 
 #define SERVICE_UUID            "b596e525-c3c6-45b3-a8bb-b8cddcc62a61"              //channel to send
 #define CHARACTERISTIC_UUID     "f364c9cb-2d2c-4eb6-92d3-28db399a09ee" 
-int ConnectToESP32(BLEAdvertisedDevice device){
-    BLEClient*  pClient  = BLEDevice::createClient();
-    Serial.println(" - Created client");
-
-    
-
-    // Connect to the remove BLE Server.
-    pClient->connect(&device);  // if you pass BLEAdvertisedDevice instead of address, it will be recognized type of peer device address (public or private)
-
-    // Obtain a reference to the service we are after in the remote BLE server.
-    
-    if (pClient->getService(SERVICE_UUID) == nullptr) {
-        pClient->disconnect();
-        return 0;
-    }
-    Serial.println(" - Found our service");
-    BLERemoteService* pRemoteService = pClient->getService(SERVICE_UUID);
-    // Obtain a reference to the characteristic in the service of the remote BLE server.
-    BLERemoteCharacteristic* pRemoteCharacteristic = pRemoteService->getCharacteristic(CHARACTERISTIC_UUID);
-    if (pRemoteCharacteristic == nullptr) {
-        pClient->disconnect();
-        return 0;
-    }
-    Serial.println(" - Found our characteristic");
-    // Read the value of the characteristic.
-    if(pRemoteCharacteristic->canRead()) {
-        std::string value = pRemoteCharacteristic->readValue();
-        Serial.print("The characteristic value was: ");
-        Serial.println(value.c_str());
-        return atoi(value.c_str());
-        pClient->connect(&device);      //to disconnect
+std::string addressTable[2] = {"24:0a:c4:61:35:8a", "24:62:ab:e1:ad:62"};
+int checkAddress(std::string address){
+    for (int i=0; i<2; i++){
+        if (addressTable[i] == address){
+            return i + 1;
+        }
     }
     return 0;
 }
