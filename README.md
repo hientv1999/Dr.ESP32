@@ -162,9 +162,9 @@ Follow [this tutorial](https://randomnerdtutorials.com/raspberry-pi-apache-mysql
     * Copy [this Python script](https://github.com/hientv1999/Dr.ESP32/blob/main/LAMP/newmailing.py) to the newly created file
     * Remember to modify the `username` and `password` variables. This project will use a Gmail account to send out alert email.
 ## Arisen issues and solutions
-1. Sketch size too big
+1. Too big sketch size
     * As mentioned in [Programming for Raspberry Pi 4](#programming-for-raspberry-pi-4), the default available sketch size is 1,310,720 bytes meanwhile the program sketch size is ~1.5 KB so we have to change the partition setting of ESP32
-2. Constantly reboot with battery power supply
+2. Constantly rebooting when being powered by battery
     * There is a brownout sensor in ESP32 that makes the ESP32 reboot if it detects the supply voltage drops significantly. As our `Dr.ESP32` is powered by battery, during setup, it has to draw huge current to initialize BLE and WiFi, leading to the significant supply voltage. Therefore, our `Dr.ESP32` keeps rebooting and cannot work. To overcome this, we have to disable the brownout sensor during starting BLE and WiFi.
     * The solution is by adding these lines of code to disable brownout sensor at the beginning of setup and enable brownout sensor at the ending of setup.
       * ```WRITE_PERI_REG(RTC_CNTL_BROWN_OUT_REG, 0);``` to disable
