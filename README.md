@@ -12,7 +12,7 @@
     - [Operating System installation](#operating-system-installation)  
     - [LAMP server installation](#lamp-server-installation)  
     - [Programming for Raspberry Pi 4](#programming-for-raspberry-pi-4)  
-- [Arisen issues and solutions](#arisen-issues-and-solution)  
+- [Arisen issues and solutions](#arisen-issues-and-solutions)  
 - [Gallery](#gallery)  
 ## The motivation
 ***It was in 2020, a year that all people on Earth won't forget about the global pandemic.***
