@@ -21,8 +21,8 @@ St state;
 static BLEUUID serviceUUID("b596e525-c3c6-45b3-a8bb-b8cddcc62a61");
 #define CHARACTERISTIC_UUID     "f364c9cb-2d2c-4eb6-92d3-28db399a09ee"  
 char auth[] = "wZP5MpIGyFyIpAYvfOFUMLW6YZExU_WO";                
-char ssid[] = "wi yeong";                                         
-char pass[] = "Ironman@";
+char ssid[] = "";       // enter your WiFi name                                   
+char pass[] = "";       // enter your WiFi password
 //-----------------------------------------------------------------------------------------------------------------------------------------
 //----the section below contains the libraries, global variables, data and functions related to BLE advertising, scanning and analysis-----
 //-----------------------------------------------------------------------------------------------------------------------------------------
