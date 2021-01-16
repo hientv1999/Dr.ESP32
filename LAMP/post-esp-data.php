@@ -3,7 +3,7 @@
 $servername = "localhost";
 
 // REPLACE with your Database name
-$dbname = "esp_data";
+$dbname = "";
 // REPLACE with Database (phpMyAdmin) user
 $username = "";
 // REPLACE with Database (phpMyAdmin) user password
