@@ -50,6 +50,8 @@ Below table is for a project with 100 `Dr.ESP32` devices. Change is neccessary a
 | ESP32 Microcontroller Development Board | 100 | 800 |
 | 1200mAh 3.2V LiFePO4 battery | 100 | 325 |
 | LM2596 DC-DC HW-411 Buck Converter | 100 | 200 |
-| Raspberry Pi 4 Model B 4GB | 1 | 87 |
-Total cost is 1412
-***Unit of currency: CAD***
+| Raspberry Pi 4 Model B 4GB | 1 | 87 |  
+
+Total cost is 1412  
+***Unit of currency: CAD***  
+
