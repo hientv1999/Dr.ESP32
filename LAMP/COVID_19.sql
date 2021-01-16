@@ -1,0 +1,6 @@
+CREATE TABLE COVID_19 (
+    id INT(16) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    FromDevice INT(5) NOT NULL,
+    ToDevice INT(5) NOT NULL,
+    contact_time VARCHAR(19)
+)
