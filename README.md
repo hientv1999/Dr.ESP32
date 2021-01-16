@@ -3,7 +3,7 @@
 ## Table of Contents
 - [The motivation](#the-motivation)  
 - [Description](#description)  
-- [Required components](#required-components)  
+- [Table of Contents](#table-of-contents)  
 - [Setup Procedure](#setup-procedure)  
   - [ESP32](#esp32)  
     - [Hardware connections](#hardware-connections)  
@@ -43,7 +43,7 @@ We will take the *supermarket* as an example. Each `Dr.ESP32` device will be mou
 then the `Dr.ESP32` will record that `Dr.ESP32` in the contact list with the date. When the customer check out, the cashiers will either scan his supermarket member card (since the member card is linked to the customer's email), or ask for his email to know who has used the `Dr.ESP32`. Also, the cashiers will scan the barcode which reveals the `Dr.ESP32` device number on the buggy or cart so the database server can link the customer's email and the `Dr.ESP32` device number together.  
 In the future, if one of the past customer has virus infection, he/she can just send the email to the supermarket with his/her virus test result for verficiation purpose. Once a staff reviews his/her email, they will enter the infected email into the database server. Then the server will automatically send alert email to all people who have close contacted with him/her, so they can have proper treatment and test.  
 
-## Required components
+## Table of Contents
 Below table is for a project with 100 `Dr.ESP32` devices. Change is neccessary accordingly to the number of `Dr.ESP32` devices in the real application. Price is not including enclosure.
 | Device | Number | Price |
 | :-----: | :----: | :----: | 
@@ -103,9 +103,9 @@ In this project, I use Arduino IDE for compiling and uploading the program. It i
     esp32.build.defines= 
     ```
 - Now, you are ready to compile and upload the program code onto the ESP32 microcontroller. There are 3 files in total:
-  - [ESP32](#https://github.com/hientv1999/Dr.ESP32/blob/main/ESP32/ESP32.ino)
-  - [functions.cpp](#https://github.com/hientv1999/Dr.ESP32/blob/main/ESP32/functions.cpp)
-  - [functions.hpp](#https://github.com/hientv1999/Dr.ESP32/blob/main/ESP32/functions.hpp)
+  * [ESP32.ino](https://github.com/hientv1999/Dr.ESP32/blob/main/ESP32/ESP32.ino)
+  * [functions.cpp](https://github.com/hientv1999/Dr.ESP32/blob/main/ESP32/functions.cpp)
+  * [functions.hpp](https://github.com/hientv1999/Dr.ESP32/blob/main/ESP32/functions.hpp)
 - Remember to modify the `ssid` and `pass` variables in the ESP32.ino file corresponding to your WiFi name and WiFi password.
 ## Raspberry Pi 4
 ### Operating System Installation
