@@ -90,68 +90,10 @@ String Read_Time_From_EEPROM(int address){
 } 
 
 
-//------------------------------------------------------------------------------DISPLAY WORK--------------------------------------------------------------------------------------------------
-
-
-#include <Wire.h>
-#include <Adafruit_GFX.h>
-#include <Adafruit_SSD1306.h>
-#include <Fonts/FreeMonoBold9pt7b.h>
-extern int button1;
-extern Adafruit_SSD1306 display;
-void print_instruction(const char text[80])
-{
-  while (!digitalRead(button1))
-  {
-     display.clearDisplay();
-     display.setTextColor(WHITE);
-     display.setTextSize(1);
-     display.setCursor(0, 0);
-     display.println(text);
-     display.println("Press 1 to proceed");
-     display.display();
-  }
-  delay(500);
-}
-
-void print_info(const char text[80], bool clear, int delay_time){
-    if (clear){
-        display.clearDisplay();
-        display.setCursor(0, 0);
-    }
-    display.setTextColor(WHITE);
-    display.setTextSize(1);
-    display.print(text); 
-    display.display();
-    delay(delay_time);
-}
-
-
 //---------------------------------------------------------------------------START WORK------------------------------------------------------------------------------------------------------
 
 
 extern char auth[32], ssid[32], pass[63];
-void welcome_screen(){
-    delay(1000);                                     //allow display has enough time to initialize before writing text                       
-    display.clearDisplay();                          //clear the display
-    display.setTextColor(WHITE);                     //display welcome screen
-    display.setCursor(0, 5);                         //everytime the esp32 is turned on
-    display.setFont(&FreeMonoBold9pt7b);             //
-    display.println(" Welcome to");                  //
-    display.println("  Dr.ESP32");                   //
-    display.display();                               //
-    delay(1000);                                     //
-    display.clearDisplay();                          //
-    display.setFont();                               //
-    display.setTextSize(1);                          //
-    display.setCursor(0, 5);                         //
-    display.println("  Together we can do");         //
-    display.setCursor(55,17);                        //
-    display.setTextSize(2);                          //
-    display.write(3);                                //
-    display.display();                               // 
-    delay(750);
-}
 enum St
     {
         WORKING, 
