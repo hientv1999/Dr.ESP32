@@ -102,7 +102,11 @@ In this project, I use Arduino IDE for compiling and uploading the program. It i
     esp32.build.partitions=default
     esp32.build.defines= 
     ```
-- Now, you are ready to compile and upload the program code onto the ESP32 microcontroller.
+- Now, you are ready to compile and upload the program code onto the ESP32 microcontroller. There are 3 files in total:
+  - [ESP32](#https://github.com/hientv1999/Dr.ESP32/blob/main/ESP32/ESP32.ino)
+  - [functions.cpp](#https://github.com/hientv1999/Dr.ESP32/blob/main/ESP32/functions.cpp)
+  - [functions.hpp](#https://github.com/hientv1999/Dr.ESP32/blob/main/ESP32/functions.hpp)
+- Remember to modify the `ssid` and `pass` variables in the ESP32.ino file corresponding to your WiFi name and WiFi password.
 ## Raspberry Pi 4
 ### Operating System Installation
 Follow [this tutorial](https://diyi0t.com/raspberry-pi-headless-setup-tutorial/) to install the OS. I recommend to install the Raspberry Pi OS (32-bit) Lite. 
@@ -152,3 +156,7 @@ Follow [this tutorial](https://randomnerdtutorials.com/raspberry-pi-apache-mysql
       * Type `sudo nano /var/www/html/trackInfection.php`
       * Copy [this PHP script](abcxyz) to the newly created file
       * Remember to modify the $dbname, $username and $password variables with your own ones
+4. Create Python file to send email upon request by LAMP Server
+    * Connecting to Raspberry Pi with an SSH connection, then type `sudo nano /var/www/html/newmailing.py`
+    * Copy [this Python script](abcxyz) to the newly created file
+    * Remember to modify the 
