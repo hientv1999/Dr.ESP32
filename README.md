@@ -32,3 +32,24 @@ Not everyone can afford a compatible smartphone, and not everyone can have regul
   
 Therefore, this project arises to overcome all those challenges. Additionally, this is my first project with both  `ESP32 microcontroller` and `Raspberry Pi 4 single-board computer`.
 ## Description
+The entire project consists of: 
+- One single `Raspberry Pi 4 single-board computer` as the database server, placed in a secure place with continuous power supply (cooling solutions such as heat sink, fan are recommended for long-term usage)
+- Multiple `Dr.ESP32` devices as client device, somehow attached to or come along with the user. Each device can run continuously for 14-15 hours under each full charge.  
+
+We will take the *supermarket* as an example. Each `Dr.ESP32` device will be mounted on the buggy or cart. Any `Dr.ESP32` in the buggy or cart station area should be disabled (under waiting state). Whenever a new customer enters the supermarket and takes the buggy or cart out of the station, the `Dr.ESP32` is then activated (under working state). In this state, `Dr.ESP32` constantly search for any nearby `Dr.ESP32` by scanning for any Bluetooth Low Energy (BLE) signal. If there is a BLE signal that:
+- is strong enough ( indicating that a nearby customer is standing closer than 2 meters from the original user )
+- has correct BLE Address ( a list of BLE Address of each `Dr.ESP32` is already stored in the sketch to identify if that is really from a `Dr.ESP32` or from smartphone, headphones,... and which `Dr.ESP32` it is )  
+
+then the `Dr.ESP32` will record that `Dr.ESP32` in the contact list with the date. When the customer check out, the cashiers will either scan his supermarket member card (since the member card is linked to the customer's email), or ask for his email to know who has used the `Dr.ESP32`. Also, the cashiers will scan the barcode which reveals the `Dr.ESP32` device number on the buggy or cart so the database server can link the customer's email and the `Dr.ESP32` device number together.  
+In the future, if one of the past customer has virus infection, he/she can just send the email to the supermarket with his/her virus test result for verficiation purpose. Once a staff reviews his/her email, they will enter the infected email into the database server. Then the server will automatically send alert email to all people who have close contacted with him/her, so they can have proper treatment and test.  
+
+## Required components
+Below table is for a project with 100 `Dr.ESP32` devices. Change is neccessary accordingly to the number of `Dr.ESP32` devices in the real application. Price is not including enclosure.
+| Device | Number | Price |
+| :-----: | :----: | :----: | 
+| ESP32 Microcontroller Development Board | 100 | 800 |
+| 1200mAh 3.2V LiFePO4 battery | 100 | 325 |
+| LM2596 DC-DC HW-411 Buck Converter | 100 | 200 |
+| Raspberry Pi 4 Model B 4GB | 1 | 87 |
+Total cost is 1412
+***Unit of currency: CAD***
