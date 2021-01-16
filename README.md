@@ -52,6 +52,103 @@ Below table is for a project with 100 `Dr.ESP32` devices. Change is neccessary a
 | LM2596 DC-DC HW-411 Buck Converter | 100 | 200 |
 | Raspberry Pi 4 Model B 4GB | 1 | 87 |  
 
-Total cost is 1412  
+Total cost is ***1412***  
 ***Unit of currency: CAD***  
+## Setup Procedure
+### ESP32
+#### Hardware connections
+Still under review but you can simply connect the USB cable to power the ESP32 on for testing and reviewing purposes. 
+#### Programming for ESP32
+In this project, I use Arduino IDE for compiling and uploading the program. It is a free software and most tinkerer will be familiar with.
+- First of all, if this is the first time you use ESP32 in Arduino IDE, you should install [ESP32 Add-on for Arduino IDE](https://randomnerdtutorials.com/installing-the-esp32-board-in-arduino-ide-windows-instructions/)  
+- Secondly, there will be some library you may want to install [PubSubClient.h library](https://github.com/knolleary/pubsubclient/archive/master.zip)
+- Thirdly the ESP32 can only store 1,310,720 bytes of sketch under default, which is not enough for our program (~ 1.5 KB). You should extend the sketch storage of the ESP32 by repartition the ESP32:
+  - Change `default.csv` file
+    - Open file `C/Users/”name”/AppData/Local/Arduino15/packages/esp32/hardware/esp32/1.0.4/tools/partitions/default.csv`
+    - Change it into  
+    
+    |  #Name  |  Type  | SubType | Offset |  Size  | Flags |
+    | :-----: | :----: | :----:  | :----: | :----: |:----: |
+    |   nvs   |  data  |   nvs   | 0x9000 | 0x5000 |       |
+    | otadata |  data  |   ota   | 0xe000 | 0x2000 |       |
+    |   app0  |  app   |  ota_0  | 0x10000|0x340000|       |
+    |  eeprom |  data  |  0x99   |0x350000| 0x1000 |       |
+    |  spiffs |  data  | spiffs  |0x351000|0xAF000 |       |
+    
+  - Change `boards.txt` file
+    - Open file `C/Users/”name”/AppData/Local/Arduino15/packages/esp32/hardware/esp32/1.0.4/boards.txt`
+    - Change the first block into
+    ```
+    esp32.name=ESP32 Max
+    
+    esp32.upload.tool=esptool_py
+    esp32.upload.maximum_size=3407872
+    esp32.upload.maximum_data_size=327680
+    esp32.upload.wait_for_upload_port=true
 
+    esp32.serial.disableDTR=true
+    esp32.serial.disableRTS=true
+
+    esp32.build.mcu=esp32
+    esp32.build.core=esp32
+    esp32.build.variant=esp32
+    esp32.build.board=ESP32_DEV
+
+    esp32.build.f_cpu=240000000L
+    esp32.build.flash_size=4MB
+    esp32.build.flash_freq=40m
+    esp32.build.flash_mode=dio
+    esp32.build.boot=dio
+    esp32.build.partitions=default
+    esp32.build.defines= 
+    ```
+- Now, you are ready to compile and upload the program code onto the ESP32 microcontroller.
+## Raspberry Pi 4
+### Operating System Installation
+Follow [this tutorial](https://diyi0t.com/raspberry-pi-headless-setup-tutorial/) to install the OS. I recommend to install the Raspberry Pi OS (32-bit) Lite. 
+***Notice***: In step sudo nano /etc/dhcpcd.conf, use these lines instead:
+```
+interface wlan0
+static ip_address = A/24
+static routers = B
+static domain_name_servers = B
+```
+where A is the Raspberry Pi IP Address (first 8-digit address from the command ```hostname -I```) and B is A with last digit replaced by 1
+### LAMP Server Installation
+Follow [this tutorial](https://randomnerdtutorials.com/raspberry-pi-apache-mysql-php-lamp-server/) to install the LAMP Server on Raspberry Pi 4.  
+### Programming for Raspberry Pi 4
+1. Preparing Your MySQL Database:
+    * Open your browser and type http://Your-Raspberry-Pi-IP-Address/phpmyadmin)
+    * Login by the account you setup before
+    * Select the `Databases` menu at the top, complete the `Create database` fields by the drop down menu:
+      * esp_data
+      * utf8mb4_general_ci
+    * Press the `Create` button
+    * save your database name as esp_data
+2. Create SQL tables:
+    * Create SQL table to store contact between devices:
+      * In the left sidebar select your database name `esp_data`
+      * Open the `SQL` tab, Copy [this SQL query](abcxyz) into the SQL query field then press the `Go` button to create your table
+    * Create SQL table to store customer information:
+      * In the left sidebar select your database name `esp_data`
+      * Open the `SQL` tab, Copy [this SQL query](abcxyz) into the SQL query field then press the `Go` button to create your table
+    * Create SQL table to identify the infected customer :
+      * In the left sidebar select your database name `esp_data`
+      * Open the `SQL` tab, Copy [this SQL query](abcxyz) into the SQL query field then press the `Go` button to create your table
+3. Create PHP files in `Raspberry Pi 4`:
+    * PHP Script HTTP POST - Insert contact data into COVID 19 Database
+      * Connecting to Raspberry Pi with an SSH connection, then type `sudo nano /var/www/html/post-esp-data.php`
+      * Copy [this PHP script](abcxyz) to the newly created file
+      * Remember to modify the $dbname, $username and $password variables with your own ones
+    * PHP Script - Display COVID 19 Database Content  
+      * Type `sudo nano /var/www/html/esp-data.php`
+      * Copy [this PHP script](abcxyz) to the newly created file
+      * Remember to modify the $dbname, $username and $password variables with your own ones
+    * PHP Script - Insert customer information into CustomerInfo Database 
+      * Type `sudo nano /var/www/html/checkOutCustomer.php`
+      * Copy [this PHP script](abcxyz) to the newly created file
+      * Remember to modify the $dbname, $username and $password variables with your own ones
+    * PHP Script - Temporarily store infected customers from the original customer  
+      * Type `sudo nano /var/www/html/trackInfection.php`
+      * Copy [this PHP script](abcxyz) to the newly created file
+      * Remember to modify the $dbname, $username and $password variables with your own ones
