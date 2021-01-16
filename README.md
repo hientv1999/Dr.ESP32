@@ -133,13 +133,13 @@ Follow [this tutorial](https://randomnerdtutorials.com/raspberry-pi-apache-mysql
 2. Create SQL tables:
     * Create SQL table to store contact between devices:
       * In the left sidebar select your database name `esp_data`
-      * Open the `SQL` tab, Copy [this SQL query](abcxyz) into the SQL query field then press the `Go` button to create your table
+      * Open the `SQL` tab, Copy [this SQL query](https://github.com/hientv1999/Dr.ESP32/blob/main/LAMP/COVID_19.sql) into the SQL query field then press the `Go` button to create your table
     * Create SQL table to store customer information:
       * In the left sidebar select your database name `esp_data`
-      * Open the `SQL` tab, Copy [this SQL query](abcxyz) into the SQL query field then press the `Go` button to create your table
+      * Open the `SQL` tab, Copy [this SQL query](https://github.com/hientv1999/Dr.ESP32/blob/main/LAMP/CustomerInfo.sql) into the SQL query field then press the `Go` button to create your table
     * Create SQL table to identify the infected customer :
       * In the left sidebar select your database name `esp_data`
-      * Open the `SQL` tab, Copy [this SQL query](abcxyz) into the SQL query field then press the `Go` button to create your table
+      * Open the `SQL` tab, Copy [this SQL query](https://github.com/hientv1999/Dr.ESP32/blob/main/LAMP/trackInfection.sql) into the SQL query field then press the `Go` button to create your table
 3. Create PHP files in `Raspberry Pi 4`:
     * PHP Script HTTP POST - Insert contact data into COVID 19 Database
       * Connecting to Raspberry Pi with an SSH connection, then type `sudo nano /var/www/html/post-esp-data.php`
