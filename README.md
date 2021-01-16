@@ -109,7 +109,8 @@ In this project, I use Arduino IDE for compiling and uploading the program. It i
 - Remember to modify the `ssid` and `pass` variables in the ESP32.ino file corresponding to your WiFi name and WiFi password.
 ## Raspberry Pi 4
 ### Operating System Installation
-Follow [this tutorial](https://diyi0t.com/raspberry-pi-headless-setup-tutorial/) to install the OS. I recommend to install the Raspberry Pi OS (32-bit) Lite. 
+Follow [this tutorial](https://diyi0t.com/raspberry-pi-headless-setup-tutorial/) to install the OS. I recommend to install the Raspberry Pi OS (32-bit) Lite.  
+
 ***Notice***: In step sudo nano /etc/dhcpcd.conf, use these lines instead:
 ```
 interface wlan0
@@ -142,21 +143,21 @@ Follow [this tutorial](https://randomnerdtutorials.com/raspberry-pi-apache-mysql
 3. Create PHP files in `Raspberry Pi 4`:
     * PHP Script HTTP POST - Insert contact data into COVID 19 Database
       * Connecting to Raspberry Pi with an SSH connection, then type `sudo nano /var/www/html/post-esp-data.php`
-      * Copy [this PHP script](abcxyz) to the newly created file
+      * Copy [this PHP script](https://github.com/hientv1999/Dr.ESP32/blob/main/LAMP/post-esp-data.php) to the newly created file
       * Remember to modify the $dbname, $username and $password variables with your own ones
     * PHP Script - Display COVID 19 Database Content  
       * Type `sudo nano /var/www/html/esp-data.php`
-      * Copy [this PHP script](abcxyz) to the newly created file
+      * Copy [this PHP script](https://github.com/hientv1999/Dr.ESP32/blob/main/LAMP/esp-data.php) to the newly created file
       * Remember to modify the $dbname, $username and $password variables with your own ones
     * PHP Script - Insert customer information into CustomerInfo Database 
       * Type `sudo nano /var/www/html/checkOutCustomer.php`
-      * Copy [this PHP script](abcxyz) to the newly created file
+      * Copy [this PHP script](https://github.com/hientv1999/Dr.ESP32/blob/main/LAMP/checkOutCustomer.php) to the newly created file
       * Remember to modify the $dbname, $username and $password variables with your own ones
     * PHP Script - Temporarily store infected customers from the original customer  
       * Type `sudo nano /var/www/html/trackInfection.php`
-      * Copy [this PHP script](abcxyz) to the newly created file
+      * Copy [this PHP script](https://github.com/hientv1999/Dr.ESP32/blob/main/LAMP/trackInfection.php) to the newly created file
       * Remember to modify the $dbname, $username and $password variables with your own ones
 4. Create Python file to send email upon request by LAMP Server
     * Connecting to Raspberry Pi with an SSH connection, then type `sudo nano /var/www/html/newmailing.py`
-    * Copy [this Python script](abcxyz) to the newly created file
-    * Remember to modify the 
+    * Copy [this Python script](https://github.com/hientv1999/Dr.ESP32/blob/main/LAMP/newmailing.py) to the newly created file
+    * Remember to modify the `username` and `password` variables. This project will use a Gmail account to send out alert email.
