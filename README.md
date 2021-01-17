@@ -61,10 +61,10 @@ Still under review but you can simply connect the USB cable to power the ESP32 o
 #### Programming for ESP32
 In this project, I use Arduino IDE for compiling and uploading the program. It is a free software and most tinkerer will be familiar with.
 - First of all, if this is the first time you use ESP32 in Arduino IDE, you should install [ESP32 Add-on for Arduino IDE](https://randomnerdtutorials.com/installing-the-esp32-board-in-arduino-ide-windows-instructions/)  
-- Secondly, there will be some library you may want to install [PubSubClient.h library](https://github.com/knolleary/pubsubclient/archive/master.zip)
+- Secondly, you may want to install the library [PubSubClient.h library](https://github.com/knolleary/pubsubclient/archive/master.zip)
 - Thirdly the ESP32 can only store 1,310,720 bytes of sketch under default, which is not enough for our program (~ 1.5 KB). You should extend the sketch storage of the ESP32 by repartition the ESP32:
   - Change `default.csv` file
-    - Open file `C/Users/”name”/AppData/Local/Arduino15/packages/esp32/hardware/esp32/1.0.4/tools/partitions/default.csv`
+    - Open file `C/Users/”YourName”/AppData/Local/Arduino15/packages/esp32/hardware/esp32/1.0.4/tools/partitions/default.csv`
     - Change it into  
     
     |  #Name  |  Type  | SubType | Offset |  Size  | Flags |
@@ -76,7 +76,7 @@ In this project, I use Arduino IDE for compiling and uploading the program. It i
     |  spiffs |  data  | spiffs  |0x351000|0xAF000 |       |
     
   - Change `boards.txt` file
-    - Open file `C/Users/”name”/AppData/Local/Arduino15/packages/esp32/hardware/esp32/1.0.4/boards.txt`
+    - Open file `C/Users/”YourName”/AppData/Local/Arduino15/packages/esp32/hardware/esp32/1.0.4/boards.txt`
     - Change the first block into
     ```
     esp32.name=ESP32 Max
@@ -123,7 +123,7 @@ where A is the Raspberry Pi IP Address (first 8-digit address from the command `
 Follow [this tutorial](https://randomnerdtutorials.com/raspberry-pi-apache-mysql-php-lamp-server/) to install the LAMP Server on Raspberry Pi 4.  
 ### Programming for Raspberry Pi 4
 1. Preparing Your MySQL Database:
-    * Open your browser and type http://Your-Raspberry-Pi-IP-Address/phpmyadmin)
+    * Open your browser and type `http://A/phpmyadmin` where A is the Raspberry Pi IP Address
     * Login by the account you setup before
     * Select the `Databases` menu at the top, complete the `Create database` fields by the drop down menu:
       * esp_data
@@ -161,12 +161,17 @@ Follow [this tutorial](https://randomnerdtutorials.com/raspberry-pi-apache-mysql
     * Connecting to Raspberry Pi with an SSH connection, then type `sudo nano /var/www/html/newmailing.py`
     * Copy [this Python script](https://github.com/hientv1999/Dr.ESP32/blob/main/LAMP/newmailing.py) to the newly created file
     * Remember to modify the `username` and `password` variables. This project will use a Gmail account to send out alert email.
-## Arisen issues and solutions
+## Arisen issues during development and solutions
 1. Too big sketch size
     * As mentioned in [Programming for Raspberry Pi 4](#programming-for-raspberry-pi-4), the default available sketch size is 1,310,720 bytes meanwhile the program sketch size is ~1.5 KB so we have to change the partition setting of ESP32
 2. Constantly rebooting when being powered by battery
-    * There is a brownout sensor in ESP32 that makes the ESP32 reboot if it detects the supply voltage drops significantly. As our `Dr.ESP32` is powered by battery, during setup, it has to draw huge current to initialize BLE and WiFi, leading to the significant supply voltage. Therefore, our `Dr.ESP32` keeps rebooting and cannot work. To overcome this, we have to disable the brownout sensor during starting BLE and WiFi.
+    * There is a brownout sensor in ESP32 that makes the ESP32 reboot if it detects the supply voltage drops significantly. As our `Dr.ESP32` is powered by battery, during setup, it has to draw huge current to initialize BLE and WiFi, leading to the significant supply voltage drop. Therefore, our `Dr.ESP32` keeps rebooting and cannot work. To overcome this, we have to disable the brownout sensor during starting BLE and WiFi.
     * The solution is by adding these lines of code to disable brownout sensor at the beginning of setup and enable brownout sensor at the ending of setup.
       * ```WRITE_PERI_REG(RTC_CNTL_BROWN_OUT_REG, 0);``` to disable
       * ```WRITE_PERI_REG(RTC_CNTL_BROWN_OUT_REG, 1);``` to enable
+3. BLE connection is waiting for too long
+    * I used to make the `Dr.ESP32` exchange device number to recognize each other. However, there are some moments the BLE connection cannot connect and it just waits for really long time for the connection ( ~50 days in default) until it proceeds to the next instructions.
+    * The solution is by changing the waiting time in the `FreeRTO.cpp` file:
+      * Go to `C/Users/”YourName”/AppData/Local/Arduino15/packages/esp32/hardware/esp32/1.0.4/libraries/BLE/src/FreeRTO.cpp`
+      * Change `xSemaphoreTake(m_semaphore, portMAX_DELAY)` into `xSemaphoreTake(m_semaphore, 3000)`
 ## Gallery
