@@ -16,7 +16,7 @@
 - [Gallery](#gallery)  
 ## The motivation
 It was in ***2020***, a year that all people on Earth won't forget about the ***global pandemic***.
-In Canada, beside other physical methods such as social distancing and sanitization, the only popular technological methods to slow the virus spread was `COVID Alert App`. `COVID Alert App` is a mobile app on both iOS and Android platforms. It can only work when the user enables Bluetooth on their smartphone. The smartphone will interact with nearby smartphone by an encrypted bluetooth message and store all the connection on the smartphone only. When an app user got infected by virus, he/she has to declare this to the app and the app will send alert from its database to other app users who have close contacted with that person.  
+In Canada, beside other physical methods such as social distancing and sanitization, the only popular technological methods to slow the virus spread was `COVID Alert App`. `COVID Alert App` is a mobile app on both iOS and Android platforms. It can only work when the user enables Bluetooth on their smartphone. The smartphone will interact with nearby smartphone by exchanging encrypted bluetooth messages and store all the connection in the smartphone only. When an app user got infected by virus, he/she has to declare this to the app and the app will send alert from its database to other app users who have close contacted with that person.  
 [Click here to learn more about the COVID Alert App](https://www.canada.ca/en/public-health/services/diseases/coronavirus-disease-covid-19/covid-alert.html).  
   
 However, there were many disadvantages that this application cannot perform as expected:
