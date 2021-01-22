@@ -50,7 +50,7 @@ Below table is for a project with 1000 `Dr.ESP32` devices. Change is neccessary 
 | Raspberry Pi 4 Model B 4GB | 1690-RASPBERRYPI4B/4GB-ND | 1 | 87 |  
 | ESP32-WROOM-32D(4MB) | 1965-ESP32-WROOM-32D(4MB)CT-ND | 1000 | 5601.40 |
 | 1200mAh 3.2V LiFePO4 battery | - | 1000 | 3250 |
-| Linear Voltage Regulator IC 1.5A | LM317AEMPX/NOPB | 1000 | 1206.56 |
+| Linear Voltage Regulator IC 1.5A | 296-12602-1-ND | 1000 | 362.50 |
 | BJT PNP 65V 6A 100mA 100Mhz 200mW SMD | BC856AW,135 | 1000 | 25.206 |
 | Shunt Voltage Reference IC 36V 1% SMD | TL431ACDBZT | 1000 | 672.00 |
 | 2.5 Ohm 1% 1/8W SMD 0805 | CRCW08052R50FKTA | 2000 | 45.2 |
