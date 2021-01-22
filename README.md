@@ -50,14 +50,14 @@ Below table is for a project with 1000 `Dr.ESP32` devices. Change is neccessary 
 | Raspberry Pi 4 Model B 4GB | 1690-RASPBERRYPI4B/4GB-ND | 1 | 87 |  
 | ESP32-WROOM-32D(4MB) | 1965-ESP32-WROOM-32D(4MB)CT-ND | 1000 | 5601.40 |
 | 1200mAh 3.2V LiFePO4 battery | - | 1000 | 3250 |
-| 470 Ohm 1% 0.1W SMD 0603 | CR0603-FX-4700ELF | 1000 | 3.91 |
 | Linear Voltage Regulator IC 1.5A | LM317AEMPX/NOPB | 1000 | 1206.56 |
-| BJT NPN 60V 6A 100Mhz 800mW SMD | NSS60601MZ4T3G | 1000 | 393.12 |
+| BJT PNP 65V 6A 100mA 100Mhz 200mW SMD | BC856AW,135 | 1000 | 25.206 |
 | Shunt Voltage Reference IC 36V 1% SMD | TL431ACDBZT | 1000 | 672.00 |
 | 2.5 Ohm 1% 1/8W SMD 0805 | CRCW08052R50FKTA | 2000 | 45.2 |
-
-
-
+| 470 Ohm 1% 0.1W SMD 0603 | CR0603-FX-4700ELF | 1000 | 3.91 |
+| 110 Ohm 1% 0.1W SMD 0603 | RC0603FR-07110RL | 1000 | 5.59 |
+| 1 kOhm 1%, 0.1W SMD 0603 | ERJ-3EKF1001V | 1000 | 8.59 |
+| 2.49 kOhm 1% 0.1W SMD 0603 | ERJ-3EKF2491V | 1000 | 8.59 |  
 
 Total cost is ***1412***  
 ***Unit of currency: CAD***  
