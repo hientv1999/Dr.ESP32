@@ -58,7 +58,7 @@ Total cost is ***1412***
 ### ESP32
 #### Hardware connections
 Still under review but here is a sense of it.
-  <img src="https://github.com/hientv1999/Dr.ESP32/ESP32/schematic.PNG">  
+  <img src="https://github.com/hientv1999/Dr.ESP32/blob/main/ESP32/schematic.PNG">  
 #### Programming for ESP32
 In this project, I use Arduino IDE for compiling and uploading the program. It is a free software and most tinkerer will be familiar with.
 - First of all, if this is the first time you use ESP32 in Arduino IDE, you should install [ESP32 Add-on for Arduino IDE](https://randomnerdtutorials.com/installing-the-esp32-board-in-arduino-ide-windows-instructions/)  
