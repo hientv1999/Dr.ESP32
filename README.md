@@ -44,13 +44,20 @@ When the customer checks out, the security guards will ask for his/her email and
 In the future, if one of the past customers is infected, he/she can send the email to the supermarket with his/her virus test result for verification purposes. Once a staff reviews his/her email, they will enter the infected email into the database server. The server will automatically send an alert email to all people who had close contact with him/her.
 
 ## Table of Contents
-Below table is for a project with 100 `Dr.ESP32` devices. Change is neccessary accordingly to the number of `Dr.ESP32` devices in the real application. Price is not including enclosure.
-| Device | Number | Price |
+Below table is for a project with 1000 `Dr.ESP32` devices. Change is neccessary accordingly to the number of `Dr.ESP32` devices in the real application. Price is not including enclosure.
+| Device | Digi-Key Part Number | Number | Price |
 | :-----: | :----: | :----: | 
-| ESP32 Microcontroller Development Board | 100 | 800 |
-| 1200mAh 3.2V LiFePO4 battery | 100 | 325 |
-| LM2596 DC-DC HW-411 Buck Converter | 100 | 200 |
-| Raspberry Pi 4 Model B 4GB | 1 | 87 |  
+| Raspberry Pi 4 Model B 4GB | 1690-RASPBERRYPI4B/4GB-ND | 1 | 87 |  
+| ESP32-WROOM-32D(4MB) | 1965-ESP32-WROOM-32D(4MB)CT-ND | 1000 | 5601.40 |
+| 1200mAh 3.2V LiFePO4 battery | - | 1000 | 3250 |
+| 470 Ohm 1% 0.1W SMD 0603 | CR0603-FX-4700ELF | 1000 | 3.91 |
+| Linear Voltage Regulator IC 1.5A | LM317AEMPX/NOPB | 1000 | 1206.56 |
+| BJT NPN 60V 6A 100Mhz 800mW SMD | NSS60601MZ4T3G | 1000 | 393.12 |
+| Shunt Voltage Reference IC 36V 1% SMD | TL431ACDBZT | 1000 | 672.00 |
+| 2.5 Ohm 1% 1/8W SMD 0805 | CRCW08052R50FKTA | 2000 | 45.2 |
+
+
+
 
 Total cost is ***1412***  
 ***Unit of currency: CAD***  
