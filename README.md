@@ -59,7 +59,7 @@ Below table is for a project with 1000 `Dr.ESP32` devices. Change is neccessary 
 | 1 kOhm 1%, 0.1W SMD 0603 | ERJ-3EKF1001V | 1000 | 8.59 |
 | 2.49 kOhm 1% 0.1W SMD 0603 | ERJ-3EKF2491V | 1000 | 8.59 |  
 
-Total cost is ***10069.986***. An average of ***10.07*** for each device 
+Total cost is ***10069.986***. An average of ***10.07*** for each device.  
 ***Unit of currency: CAD***  
 ## Setup Procedure
 ### ESP32
