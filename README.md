@@ -3,7 +3,7 @@
 ## Table of Contents
 - [The motivation](#the-motivation)  
 - [Description](#description)  
-- [Table of Contents](#table-of-contents)  
+- [Board of Materials](#board-of-materials)  
 - [Setup Procedure](#setup-procedure)  
   - [ESP32](#esp32)  
     - [Hardware connections](#hardware-connections)  
@@ -43,7 +43,7 @@ For example, this system is implemented in a supermarket. Each `Dr.ESP32` is att
 When the customer checks out, the security guards will ask for his/her email and enter the device number to the database so the server can link the customer's email and the `Dr.ESP32` device number together.  
 In the future, if one of the past customers is infected, he/she can send the email to the supermarket with his/her virus test result for verification purposes. Once a staff reviews his/her email, they will enter the infected email into the database server. The server will automatically send an alert email to all people who had close contact with him/her.
 
-## Board Of Materials
+## Board of Materials
 Below table is for a project with 1000 `Dr.ESP32` devices. Change is neccessary accordingly to the number of `Dr.ESP32` devices in the real application. Price is not including enclosure.
 | Device | Digi-Key Part Number | Number | Price |
 | :-----: | :----: | :----: | :-----: |
