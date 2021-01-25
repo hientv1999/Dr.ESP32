@@ -183,6 +183,6 @@ Follow [this tutorial](https://randomnerdtutorials.com/raspberry-pi-apache-mysql
     * The solution is by changing the waiting time in the `FreeRTO.cpp` file:
       * Go to `C/Users/”YourName”/AppData/Local/Arduino15/packages/esp32/hardware/esp32/1.0.4/libraries/BLE/src/FreeRTO.cpp`
       * Change `xSemaphoreTake(m_semaphore, portMAX_DELAY)` into `xSemaphoreTake(m_semaphore, 3000)`
-## Gallery
+## Gallery  
 ###Main hardware  
   <img width="1080" height="720" src="https://github.com/hientv1999/Dr.ESP32/blob/main/Gallery/Overview photo.JPG">
