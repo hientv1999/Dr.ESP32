@@ -1,5 +1,5 @@
 # Dr.ESP32
-[***Download full project (contains ...)***](https://github.com/hientv1999/Dr.ESP32/archive/main.zip)  
+[***Download full project (contains programs for ESP32, programs for Raspberry Pi 4B and photos with video)***](https://github.com/hientv1999/Dr.ESP32/archive/main.zip)  
 ## Table of Contents
 - [The motivation](#the-motivation)  
 - [Description](#description)  
