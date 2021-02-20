@@ -185,7 +185,7 @@ Follow [this tutorial](https://randomnerdtutorials.com/raspberry-pi-apache-mysql
       * Change `xSemaphoreTake(m_semaphore, portMAX_DELAY)` into `xSemaphoreTake(m_semaphore, 3000)`
 ## Gallery  
 ### Main hardware  
-<img width="1080" height="720" src="https://github.com/hientv1999/Dr.ESP32/blob/main/Gallery/Overview photo.JPG">   
+***Click on the image to play the demonstration video***  
 <div align="center">
   <a href="https://www.youtube.com/watch?v=uqLiyEggyRM&feature=youtu.be"><img src="https://github.com/hientv1999/Dr.ESP32/blob/main/Gallery/Overview photo.JPG" alt="Demonstration Video"></a>
 </div> 
