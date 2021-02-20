@@ -186,4 +186,6 @@ Follow [this tutorial](https://randomnerdtutorials.com/raspberry-pi-apache-mysql
 ## Gallery  
 ### Main hardware  
 <img width="1080" height="720" src="https://github.com/hientv1999/Dr.ESP32/blob/main/Gallery/Overview photo.JPG">   
-[![Demonstration Video for Dr.ESP32](https://github.com/hientv1999/Dr.ESP32/blob/main/Gallery/Overview photo.JPG)](https://www.youtube.com/watch?v=uqLiyEggyRM&feature=youtu.be "Demonstration Video for Dr.ESP32")  
+<div align="center">
+  <a href="https://www.youtube.com/watch?v=uqLiyEggyRM&feature=youtu.be"><img src="https://github.com/hientv1999/Dr.ESP32/blob/main/Gallery/Overview photo.JPG" alt="Demonstration Video"></a>
+</div> 
