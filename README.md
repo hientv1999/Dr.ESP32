@@ -35,7 +35,7 @@ Therefore, this project arises to overcome all those challenges. Additionally, t
 The entire project consists of: 
 - One single `Raspberry Pi 4 single-board computer` as the database server, placed in a secure place with continuous power supply (cooling solutions such as heat sink, fan are recommended for long-term usage)
 - Multiple `Dr.ESP32` devices which contain a `ESP32` microcontroller and a `LiFePO4 3.2V 1200mAh` battery as client device, attached to or come along with the user. Each device can run continuously for 14-15 hours under each full charge.  
-
+##Typical application
 For example, this system is implemented in a supermarket. Each `Dr.ESP32` is attached to the buggy or cart. The device should be disabled (under waiting state) in the buggy or cart station area. Whenever a new customer enters the supermarket and takes the buggy or cart out of the station, the `Dr.ESP32` is activated (under working state). In this state,`Dr.ESP32` continuously searches for any nearby `Dr.ESP32` by scanning for any Bluetooth Low Energy (BLE) signal. The `Dr.ESP32` will record that `Dr.ESP32` in the contact list with the date and sent them to the database server (or store in EEPROM if it cannot connect to the server) if that Dr.ESP32 transmits a BLE signal that:
 - is strong enough ( indicating that a nearby customer is standing closer than 2 meters from the original user )
 - has correct BLE Address ( a list of BLE Address of each `Dr.ESP32` is already stored in the sketch to identify if that is really from a `Dr.ESP32` or from smartphone, headphones,... and which `Dr.ESP32` it is )  
