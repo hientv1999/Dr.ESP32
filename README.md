@@ -3,7 +3,7 @@
 ## Table of Contents
 - [The motivation](#the-motivation)  
 - [Description](#description)  
-- [Typical Application)(#typical-application)  
+- [Typical Application](#typical-application)  
 - [Board of Materials](#board-of-materials)  
 - [Setup Procedure](#setup-procedure)  
   - [ESP32](#esp32)  
