@@ -66,6 +66,7 @@ Total cost is ***10069.986***. An average of ***10.07*** for each device.
 ### ESP32
 #### Hardware connections
 Still under review but here is a sense of it.
+***Update: Below circuit is ineffective anymore***
   <img src="https://github.com/hientv1999/Dr.ESP32/blob/main/ESP32/schematic.PNG">  
 #### Programming for ESP32
 In this project, I use Arduino IDE for compiling and uploading the program. It is a free software and most tinkerer will be familiar with.
