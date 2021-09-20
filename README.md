@@ -41,7 +41,7 @@ For example, this system is implemented in a supermarket. Each `Dr.ESP32` is att
 - is strong enough ( indicating that a nearby customer is standing closer than 2 meters from the original user )
 - has correct BLE Address ( a list of BLE Address of each `Dr.ESP32` is already stored in the sketch to identify if that is really from a `Dr.ESP32` or from smartphone, headphones,... and which `Dr.ESP32` it is )  
 
-When the customer checks out, the security guards will ask for his/her email and enter the device number to the database so the server can link the customer's email and the `Dr.ESP32` device number together.  
+When the customer checks out, the security guards will ask for his/her email and enter the device number to the database so the server can link the customer's email and the `Dr.ESP32` device number together. In the future, this process will be automated by scanning customer member card (such as More Reward card, Air Miles card,..) and scan the NFT of the cart to get the `Dr.ESP32` device number. 
 In the future, if one of the past customers is infected, he/she can send the email to the supermarket with his/her virus test result for verification purposes. Once a staff reviews his/her email, they will enter the infected email into the database server. The server will automatically send an alert email to all people who had close contact with him/her.
 
 ## Board of Materials
