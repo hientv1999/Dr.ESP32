@@ -24,7 +24,7 @@ However, there were many issues that this application cannot tackle:
 - #### Privacy:  
 Many people were concerned about how their private information will be stored and used and who could access them.
 - #### Dependency on users' device:  
-It could be that people left their phone at home when they go out, the WiFi connection is terrible to get alert in time, or simply they don't have an compatible smartphone
+It could be that people left their phone at home when they go out, the WiFi connection is terrible to get alert in time, or simply they don't have a compatible smartphone
 - #### Dependency on user's routine:  
 Smartphone users usually turn off the Bluetooth to increase battery life. Therefore, many app users may coincidentially leave the app running without Bluetooth which are useless and ineffective.
 - #### Affordability:  
